@@ -38,10 +38,10 @@ VGGT_ID = "facebook/VGGT-1B"
 TRAIN_SCENES = [
     "scene0011_00",
     "scene0015_00",
-    "scene0019_00",
-    "scene0025_00",
     "scene0030_00",
     "scene0046_00",
+    "scene0081_00",
+    "scene0084_00",
 ]
 TEST_SCENES = [
     "scene0050_00",
