@@ -1,6 +1,6 @@
 {
-  "variant": "rgb",
-  "label": "RGB-only",
+  "variant": "combined-iea",
+  "label": "RGB + implicit/explicit cross-attention",
   "seeds": [0, 1, 2, 3],
   "frames_per_scene": 8,
   "tokens_per_stream": 32,
