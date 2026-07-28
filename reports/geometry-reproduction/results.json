@@ -72,6 +72,21 @@
     "ieaMinusAddition": {"mean": 0.5365, "ci95": [-2.2012, 3.2741]},
     "ieaMinusShuffled": {"mean": -1.4485, "ci95": [-2.9457, 0.0487]}
   },
+  "throughputMean": {
+    "units": {
+      "featureExtraction": "scenes/second",
+      "training": "examples/second",
+      "inference": "examples/second"
+    },
+    "rgb": {"featureExtraction": 0.5972, "training": 17.4009, "inference": 354.50},
+    "implicit": {"featureExtraction": 0.7196, "training": 19.7347, "inference": 592.23},
+    "explicitReconstructed": {"featureExtraction": 0.8932, "training": 18.2200, "inference": 1220.38},
+    "combinedIEA": {"featureExtraction": 0.5418, "training": 17.6054, "inference": 424.59},
+    "concat": {"featureExtraction": 0.9293, "training": 16.4993, "inference": 277.63},
+    "addition": {"featureExtraction": 0.5973, "training": 17.7939, "inference": 522.68},
+    "shuffledExplicit": {"featureExtraction": 0.6378, "training": 15.9263, "inference": 84.12},
+    "sensorGeometry": {"featureExtraction": 0.3984, "training": 17.9234, "inference": 88.74}
+  },
   "compute": {
     "backend": "kubernetes",
     "gpuModel": "NVIDIA RTX PRO 6000 Blackwell",

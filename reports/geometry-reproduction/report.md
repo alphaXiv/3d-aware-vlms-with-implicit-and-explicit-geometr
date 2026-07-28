@@ -21,6 +21,15 @@ CLIP supplied frozen image and text features. Frozen VGGT supplied (1) learned s
 
 The runs used **Kubernetes on NVIDIA RTX PRO 6000 Blackwell GPUs**, with **16 GPUs peak concurrent**, four per job. The fresh valid campaign ran from 02:23:38 to 04:02:15 UTC: **1 h 38 min 36 s (1.6434 wall hours)**. Individual four-seed jobs took 20.4–25.2 minutes.
 
+| Condition | Feature scenes/s | Train examples/s | Inference examples/s |
+|---|---:|---:|---:|
+| RGB | 0.60 | 17.40 | 354.50 |
+| Implicit | 0.72 | 19.73 | 592.23 |
+| Explicit | 0.89 | 18.22 | 1,220.38 |
+| IEA | 0.54 | 17.61 | 424.59 |
+
+Rates average the two four-seed jobs per headline condition. Inference batches are small, so throughput is descriptive rather than a ranking claim.
+
 ## Claim-by-claim evidence
 
 | Claim | Paper result | Observed result | Assessment |
