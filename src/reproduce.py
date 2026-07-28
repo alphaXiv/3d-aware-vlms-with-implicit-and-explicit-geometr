@@ -12,7 +12,6 @@ import shutil
 import sys
 import time
 import traceback
-import zipfile
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -21,7 +20,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from huggingface_hub import hf_hub_download, snapshot_download
+from huggingface_hub import HfApi, hf_hub_download, snapshot_download
 from PIL import Image
 from plyfile import PlyData
 from torch.utils.data import DataLoader, Dataset
@@ -32,23 +31,23 @@ PAPER_ID = "2607.21595"
 GPU_MODEL = "NVIDIA RTX PRO 6000 Blackwell"
 ANNOTATION_REPO = "zd11024/Video-3D-LLM_data"
 ANNOTATION_FILE = "processed/scanrefer_vg_val_llava_style.json"
-RGB_POSE_REPO = "GaussianWorld/scannet_mini_val_set_suite"
+RGB_REPO = "SpatialVision/scannet_val"
 MESH_REPO = "zahidpichen/scannet-dataset"
 CLIP_ID = "openai/clip-vit-base-patch32"
 VGGT_ID = "facebook/VGGT-1B"
 TRAIN_SCENES = [
     "scene0011_00",
-    "scene0011_01",
-    "scene0153_00",
-    "scene0153_01",
-    "scene0329_01",
-    "scene0329_02",
+    "scene0015_00",
+    "scene0019_00",
+    "scene0025_00",
+    "scene0030_00",
+    "scene0046_00",
 ]
 TEST_SCENES = [
-    "scene0435_00",
-    "scene0435_01",
-    "scene0578_01",
-    "scene0578_02",
+    "scene0050_00",
+    "scene0063_00",
+    "scene0064_00",
+    "scene0077_00",
 ]
 ALL_SCENES = TRAIN_SCENES + TEST_SCENES
 
@@ -80,7 +79,7 @@ def prepare_assets(root: Path) -> dict[str, Any]:
     root.mkdir(parents=True, exist_ok=True)
     sources: dict[str, Any] = {
         "annotation_repo": ANNOTATION_REPO,
-        "rgb_pose_repo": RGB_POSE_REPO,
+        "rgb_repo": RGB_REPO,
         "mesh_repo": MESH_REPO,
         "clip_model": CLIP_ID,
         "vggt_model": VGGT_ID,
@@ -94,15 +93,33 @@ def prepare_assets(root: Path) -> dict[str, Any]:
 
     for scene in ALL_SCENES:
         scene_dir = root / scene
-        transform_path = scene_dir / "transforms_train.json"
-        if not transform_path.exists():
-            archive_name = f"original_data/{scene}.zip"
-            archive = download_file(RGB_POSE_REPO, archive_name)
-            with zipfile.ZipFile(archive) as zf:
-                zf.extractall(root)
-            sources["files"][archive_name] = sha256_file(archive)
-        else:
-            sources["files"][f"original_data/{scene}.zip"] = "cached-extracted"
+        scene_dir.mkdir(parents=True, exist_ok=True)
+        api = HfApi(token=os.environ.get("HF_TOKEN"))
+        entries = list(
+            api.list_repo_tree(
+                repo_id=RGB_REPO,
+                path_in_repo=scene,
+                repo_type="dataset",
+                recursive=False,
+            )
+        )
+        rgb_files = sorted(
+            entry.path for entry in entries if getattr(entry, "path", "").endswith(".jpg")
+        )
+        if len(rgb_files) < 8:
+            raise RuntimeError(f"{scene} has only {len(rgb_files)} public RGB frames")
+        indices = np.linspace(0, len(rgb_files) - 1, 8).round().astype(int)
+        selected_rgb = [rgb_files[i] for i in indices]
+        rgb_hashes = []
+        for rgb_name in selected_rgb:
+            rgb_src = download_file(RGB_REPO, rgb_name)
+            rgb_dst = scene_dir / Path(rgb_name).name
+            if not rgb_dst.exists():
+                shutil.copy2(rgb_src, rgb_dst)
+            rgb_hashes.append(sha256_file(rgb_dst))
+        sources["files"][f"{scene}/selected_rgb8"] = hashlib.sha256(
+            "".join(rgb_hashes).encode()
+        ).hexdigest()
 
         mesh_name = f"{scene}/{scene}_vh_clean_2.ply"
         mesh_src = download_file(MESH_REPO, mesh_name)
@@ -190,6 +207,8 @@ def load_scene_data(root: Path, config: dict[str, Any]) -> dict[str, SceneData]:
     output: dict[str, SceneData] = {}
     for scene in ALL_SCENES:
         scene_records = by_scene[scene]
+        if not scene_records:
+            raise RuntimeError(f"No ScanRefer annotations found for required scene {scene}")
         object_to_box: dict[str, list[float]] = {}
         for record in scene_records:
             object_to_box.setdefault(str(record["metadata"]["object_id"]), record["box"])
@@ -216,15 +235,7 @@ def load_scene_data(root: Path, config: dict[str, Any]) -> dict[str, SceneData]:
             for record in selected
         ]
 
-        transform = json.loads((root / scene / "transforms_train.json").read_text())
-        frame_paths = []
-        for frame in transform["frames"]:
-            rel = frame["file_path"]
-            path = root / scene / rel
-            if path.suffix == "":
-                path = path.with_suffix(".jpg")
-            if path.exists():
-                frame_paths.append(str(path))
+        frame_paths = [str(path) for path in sorted((root / scene).glob("*.jpg"))]
         frame_count = int(config["frames_per_scene"])
         indices = np.linspace(0, len(frame_paths) - 1, frame_count).round().astype(int)
         image_paths = [frame_paths[i] for i in indices]
@@ -240,6 +251,8 @@ def load_scene_data(root: Path, config: dict[str, Any]) -> dict[str, SceneData]:
             image_paths=image_paths,
             sensor_points=sensor_points,
         )
+    if len({scene for scene in TEST_SCENES if output[scene].examples}) != len(TEST_SCENES):
+        raise RuntimeError("Held-out split does not contain all required annotated scenes")
     return output
 
 
