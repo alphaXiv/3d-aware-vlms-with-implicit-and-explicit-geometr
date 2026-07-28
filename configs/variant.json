@@ -1,6 +1,6 @@
 {
-  "variant": "rgb",
-  "label": "RGB-only",
+  "variant": "explicit-recon",
+  "label": "RGB + reconstructed VGGT point-map tokens",
   "seeds": [0, 1, 2, 3],
   "frames_per_scene": 8,
   "tokens_per_stream": 32,
