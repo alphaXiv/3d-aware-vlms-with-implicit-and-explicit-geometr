@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560" role="img">
+<title>Paired effects do not support a useful geometry advantage</title>
+<style>text{font-family:Inter,Arial,sans-serif;fill:#17202a}.title{font-size:25px;font-weight:700}.sub{font-size:15px;fill:#667085}.axis{font-size:13px;fill:#667085}.label{font-size:15px;font-weight:600}.value{font-size:14px;font-weight:700}.note{font-size:13px;fill:#667085}.grid{stroke:#d8dee8;stroke-width:1}.zero{stroke:#17202a;stroke-width:2}.point{stroke:#fff;stroke-width:1.5}</style>
+<rect width="1000" height="560" fill="#ffffff" rx="12"/>
+<text x="40" y="42" class="title">Paired effects do not support a useful geometry advantage</text>
+<text x="40" y="68" class="sub">Mean Acc@0.25 difference in percentage points; whiskers are 95% t intervals over 8 paired seeds.</text>
+<line x1="345.0" y1="108" x2="345.0" y2="486" class="grid"/>
+<text x="345.0" y="512" text-anchor="middle" class="axis">-8</text>
+<line x1="435.0" y1="108" x2="435.0" y2="486" class="grid"/>
+<text x="435.0" y="512" text-anchor="middle" class="axis">-6</text>
+<line x1="525.0" y1="108" x2="525.0" y2="486" class="grid"/>
+<text x="525.0" y="512" text-anchor="middle" class="axis">-4</text>
+<line x1="615.0" y1="108" x2="615.0" y2="486" class="grid"/>
+<text x="615.0" y="512" text-anchor="middle" class="axis">-2</text>
+<line x1="705.0" y1="108" x2="705.0" y2="486" class="zero"/>
+<text x="705.0" y="512" text-anchor="middle" class="axis">+0</text>
+<line x1="795.0" y1="108" x2="795.0" y2="486" class="grid"/>
+<text x="795.0" y="512" text-anchor="middle" class="axis">+2</text>
+<line x1="885.0" y1="108" x2="885.0" y2="486" class="grid"/>
+<text x="885.0" y="512" text-anchor="middle" class="axis">+4</text>
+<text x="42" y="147" class="label">Implicit − RGB</text>
+<line x1="390.0" y1="142" x2="677.5" y2="142" stroke="#fde725" stroke-width="5" stroke-linecap="round"/>
+<circle cx="533.5" cy="142" r="8" fill="#fde725" class="point"/>
+<text x="947" y="147" class="value" text-anchor="end">-3.81</text>
+<text x="42" y="205" class="label">Explicit − RGB</text>
+<line x1="435.9" y1="200" x2="660.0" y2="200" stroke="#35b779" stroke-width="5" stroke-linecap="round"/>
+<circle cx="548.0" cy="200" r="8" fill="#35b779" class="point"/>
+<text x="947" y="205" class="value" text-anchor="end">-3.49</text>
+<text x="42" y="263" class="label">IEA − RGB</text>
+<line x1="333.3" y1="258" x2="656.4" y2="258" stroke="#7e03a8" stroke-width="5" stroke-linecap="round"/>
+<circle cx="494.9" cy="258" r="8" fill="#7e03a8" class="point"/>
+<text x="947" y="263" class="value" text-anchor="end">-4.67</text>
+<text x="42" y="321" class="label">IEA − concat</text>
+<line x1="539.0" y1="316" x2="875.5" y2="316" stroke="#7e03a8" stroke-width="5" stroke-linecap="round"/>
+<circle cx="707.2" cy="316" r="8" fill="#7e03a8" class="point"/>
+<text x="947" y="321" class="value" text-anchor="end">+0.05</text>
+<text x="42" y="379" class="label">IEA − addition</text>
+<line x1="606.0" y1="374" x2="852.1" y2="374" stroke="#7e03a8" stroke-width="5" stroke-linecap="round"/>
+<circle cx="729.3" cy="374" r="8" fill="#7e03a8" class="point"/>
+<text x="947" y="379" class="value" text-anchor="end">+0.54</text>
+<text x="42" y="437" class="label">IEA − shuffled</text>
+<line x1="572.2" y1="432" x2="707.2" y2="432" stroke="#ef6c35" stroke-width="5" stroke-linecap="round"/>
+<circle cx="639.8" cy="432" r="8" fill="#ef6c35" class="point"/>
+<text x="947" y="437" class="value" text-anchor="end">-1.45</text>
+<text x="615" y="544" text-anchor="middle" class="note">Positive favors the first-named condition; intervals crossing zero are inconclusive.</text>
+</svg>

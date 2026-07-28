@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560" role="img">
+<title>Correct correspondence was not the source of improvement</title>
+<style>text{font-family:Inter,Arial,sans-serif;fill:#17202a}.title{font-size:25px;font-weight:700}.sub{font-size:15px;fill:#667085}.axis{font-size:13px;fill:#667085}.label{font-size:15px;font-weight:600}.value{font-size:14px;font-weight:700}.note{font-size:13px;fill:#667085}.grid{stroke:#d8dee8;stroke-width:1}.zero{stroke:#17202a;stroke-width:2}.point{stroke:#fff;stroke-width:1.5}</style>
+<rect width="1000" height="560" fill="#ffffff" rx="12"/>
+<text x="40" y="42" class="title">Correct correspondence was not the source of improvement</text>
+<text x="40" y="68" class="sub">Acc@0.25 means; aligned, shuffled, and sensor-geometry controls use the same matched adapter.</text>
+<line x1="95" y1="440.0" x2="940" y2="440.0" class="grid"/>
+<text x="78" y="445.0" text-anchor="end" class="axis">0%</text>
+<line x1="95" y1="366.8" x2="940" y2="366.8" class="grid"/>
+<text x="78" y="371.8" text-anchor="end" class="axis">5%</text>
+<line x1="95" y1="293.6" x2="940" y2="293.6" class="grid"/>
+<text x="78" y="298.6" text-anchor="end" class="axis">10%</text>
+<line x1="95" y1="220.5" x2="940" y2="220.5" class="grid"/>
+<text x="78" y="225.5" text-anchor="end" class="axis">15%</text>
+<line x1="95" y1="147.3" x2="940" y2="147.3" class="grid"/>
+<text x="78" y="152.3" text-anchor="end" class="axis">20%</text>
+<rect x="145" y="184.8" width="125" height="255.2" rx="6" fill="#31688e"/>
+<text x="207.5" y="174.8" text-anchor="middle" class="value">17.44%</text>
+<text x="207.5" y="474" text-anchor="middle" class="label">RGB</text>
+<text x="207.5" y="498" text-anchor="middle" class="axis">n=8 seeds</text>
+<rect x="350" y="253.1" width="125" height="186.9" rx="6" fill="#7e03a8"/>
+<text x="412.5" y="243.1" text-anchor="middle" class="value">12.77%</text>
+<text x="412.5" y="474" text-anchor="middle" class="label">Aligned IEA</text>
+<text x="412.5" y="498" text-anchor="middle" class="axis">n=8 seeds</text>
+<rect x="555" y="231.9" width="125" height="208.1" rx="6" fill="#ef6c35"/>
+<text x="617.5" y="221.9" text-anchor="middle" class="value">14.22%</text>
+<text x="617.5" y="474" text-anchor="middle" class="label">Shuffled explicit</text>
+<text x="617.5" y="498" text-anchor="middle" class="axis">n=8 seeds</text>
+<rect x="760" y="226.4" width="125" height="213.6" rx="6" fill="#35b779"/>
+<text x="822.5" y="216.4" text-anchor="middle" class="value">14.59%</text>
+<text x="822.5" y="474" text-anchor="middle" class="label">Sensor geometry</text>
+<text x="822.5" y="498" text-anchor="middle" class="axis">n=4 seeds</text>
+<text x="500" y="540" text-anchor="middle" class="note">Shuffling explicit scene tokens is +1.45 points over aligned IEA; sensor geometry remains below RGB.</text>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560" role="img">
+<title>The paper's monotonic geometry gain did not appear here</title>
+<style>text{font-family:Inter,Arial,sans-serif;fill:#17202a}.title{font-size:25px;font-weight:700}.sub{font-size:15px;fill:#667085}.axis{font-size:13px;fill:#667085}.label{font-size:15px;font-weight:600}.value{font-size:14px;font-weight:700}.note{font-size:13px;fill:#667085}.grid{stroke:#d8dee8;stroke-width:1}.zero{stroke:#17202a;stroke-width:2}.point{stroke:#fff;stroke-width:1.5}</style>
+<rect width="1000" height="560" fill="#ffffff" rx="12"/>
+<text x="40" y="42" class="title">The paper's monotonic geometry gain did not appear here</text>
+<text x="40" y="68" class="sub">Separate axes: paper 3D-video F1@0.25 (left); reproduction ScanRefer-style Acc@0.25 (right).</text>
+<text x="50" y="108" class="label">Paper ablation</text>
+<line x1="170.0" y1="128" x2="170.0" y2="462" class="grid"/>
+<text x="170.0" y="486" text-anchor="middle" class="axis">0</text>
+<line x1="230.0" y1="128" x2="230.0" y2="462" class="grid"/>
+<text x="230.0" y="486" text-anchor="middle" class="axis">10</text>
+<line x1="290.0" y1="128" x2="290.0" y2="462" class="grid"/>
+<text x="290.0" y="486" text-anchor="middle" class="axis">20</text>
+<line x1="350.0" y1="128" x2="350.0" y2="462" class="grid"/>
+<text x="350.0" y="486" text-anchor="middle" class="axis">30</text>
+<line x1="410.0" y1="128" x2="410.0" y2="462" class="grid"/>
+<text x="410.0" y="486" text-anchor="middle" class="axis">40</text>
+<line x1="470.0" y1="128" x2="470.0" y2="462" class="grid"/>
+<text x="470.0" y="486" text-anchor="middle" class="axis">50</text>
+<text x="50" y="172" class="label">RGB baseline</text>
+<rect x="170" y="148" width="185.4" height="34" rx="5" fill="#31688e"/>
+<text x="363.4" y="171" class="value">30.90</text>
+<text x="50" y="250" class="label">+ explicit</text>
+<rect x="170" y="226" width="208.2" height="34" rx="5" fill="#35b779"/>
+<text x="386.2" y="249" class="value">34.70</text>
+<text x="50" y="328" class="label">+ implicit</text>
+<rect x="170" y="304" width="243.0" height="34" rx="5" fill="#fde725"/>
+<text x="421.0" y="327" class="value">40.50</text>
+<text x="50" y="406" class="label">IEA combined</text>
+<rect x="170" y="382" width="256.8" height="34" rx="5" fill="#7e03a8"/>
+<text x="434.8" y="405" class="value">42.80</text>
+<text x="525" y="108" class="label">Bounded reproduction · 8 seeds</text>
+<line x1="645.0" y1="128" x2="645.0" y2="462" class="grid"/>
+<text x="645.0" y="486" text-anchor="middle" class="axis">0</text>
+<line x1="713.2" y1="128" x2="713.2" y2="462" class="grid"/>
+<text x="713.2" y="486" text-anchor="middle" class="axis">5</text>
+<line x1="781.4" y1="128" x2="781.4" y2="462" class="grid"/>
+<text x="781.4" y="486" text-anchor="middle" class="axis">10</text>
+<line x1="849.5" y1="128" x2="849.5" y2="462" class="grid"/>
+<text x="849.5" y="486" text-anchor="middle" class="axis">15</text>
+<line x1="917.7" y1="128" x2="917.7" y2="462" class="grid"/>
+<text x="917.7" y="486" text-anchor="middle" class="axis">20</text>
+<text x="525" y="172" class="label">RGB</text>
+<rect x="645" y="148" width="237.8" height="34" rx="5" fill="#31688e"/>
+<text x="890.8" y="171" class="value">17.44</text>
+<text x="525" y="250" class="label">+ explicit</text>
+<rect x="645" y="226" width="190.2" height="34" rx="5" fill="#35b779"/>
+<text x="843.2" y="249" class="value">13.95</text>
+<text x="525" y="328" class="label">+ implicit</text>
+<rect x="645" y="304" width="185.9" height="34" rx="5" fill="#fde725"/>
+<text x="838.9" y="327" class="value">13.63</text>
+<text x="525" y="406" class="label">IEA combined</text>
+<rect x="645" y="382" width="174.1" height="34" rx="5" fill="#7e03a8"/>
+<text x="827.1" y="405" class="value">12.77</text>
+<text x="500" y="530" text-anchor="middle" class="note">Higher is better. Values are directional comparisons, not a shared metric scale.</text>
+</svg>
