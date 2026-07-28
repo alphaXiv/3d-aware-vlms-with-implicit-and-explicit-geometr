@@ -19,7 +19,7 @@ We used six public scenes for training, four disjoint scenes for testing, eight 
 
 CLIP supplied frozen image and text features. Frozen VGGT supplied (1) learned scene tokens and (2) point maps reconstructed from RGB; its use is a documented substitute for the paper’s unavailable AnySplat training recipe. Every condition registered exactly **595,073 trainable parameters**, saw identical data, and used seeds 0–7. The [encoder path](../../src/reproduce.py#L264-L362) and [matched fusion adapter](../../src/reproduce.py#L414-L470) are compact enough to audit.
 
-The runs used **Kubernetes on NVIDIA RTX PRO 6000 Blackwell GPUs**, with **16 GPUs peak concurrent**, four per job. The fresh valid campaign ran from 02:23:38 to 04:02:15 UTC: **1 h 38 min 36 s (1.6434 wall hours)**. Individual four-seed jobs took 20.4–25.2 minutes.
+The queue runner verified **18 successful Kubernetes runs** on **NVIDIA RTX PRO 6000 Blackwell GPUs**, with **16 GPUs peak concurrent**, four per job. The observed Kubernetes campaign took **1.955439 wall hours** (about 1 h 57 min 20 s). Individual four-seed jobs took 20.4–25.2 minutes.
 
 | Condition | Feature scenes/s | Train examples/s | Inference examples/s |
 |---|---:|---:|---:|

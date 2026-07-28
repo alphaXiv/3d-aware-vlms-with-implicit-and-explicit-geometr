@@ -8,7 +8,7 @@ We tested the central claim of [*3D-Aware VLMs with Implicit and Explicit Geomet
 
 This is a deliberate downscale: frozen CLIP and VGGT replace the paper’s jointly trained 3B VLM and AnySplat path; ten public validation scenes are split six/four by scene; and a matched 595,073-parameter adapter selects among real object proposals rather than producing free-form detections. Reconstructed VGGT point maps are the primary explicit stream, with sensor-mesh and shuffled-geometry controls.
 
-Runs used **Kubernetes**, **NVIDIA RTX PRO 6000 Blackwell** GPUs, **16 GPUs peak concurrent**, and **1.6434 elapsed wall hours** from first valid run start to final run finish.
+The queue runner verified **18 successful Kubernetes runs** on **NVIDIA RTX PRO 6000 Blackwell** GPUs, with **16 GPUs peak concurrent** and **1.955439 observed campaign wall hours**.
 
 [Read the illustrated report](reports/geometry-reproduction/report.md) · [Inspect the self-contained notebook](notebooks/geometry_reproduction.py) · [Download the measured arrays](reports/geometry-reproduction/results.json)
 

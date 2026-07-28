@@ -179,26 +179,26 @@ def _(mo):
     mo.md(r"""
     ## From pixels to a grounded box
 
-    1. **Freeze the encoders.** CLIP turns eight RGB frames into spatial image tokens and the referring expression into a text vector. VGGT turns the same frames into learned scene tokens and a reconstructed point map.
-    2. **Match capacity.** Every variant instantiates the same 595,073-parameter adapter; unused modules remain registered, so parameter count cannot explain a difference.
-    3. **Change only the feature path.** RGB is the control. Implicit and explicit variants add one geometry stream. IEA lets implicit tokens query explicit tokens. Concatenation and addition are simple-fusion controls.
-    4. **Ground on unseen scenes.** A text-conditioned scorer chooses among real object boxes in four held-out scenes. Acc@0.25 and Acc@0.50 test 3D box overlap.
+        1. **Freeze the encoders.** CLIP turns eight RGB frames into spatial image tokens and the referring expression into a text vector. VGGT turns the same frames into learned scene tokens and a reconstructed point map.
+        2. **Match capacity.** Every variant instantiates the same 595,073-parameter adapter; unused modules remain registered, so parameter count cannot explain a difference.
+        3. **Change only the feature path.** RGB is the control. Implicit and explicit variants add one geometry stream. IEA lets implicit tokens query explicit tokens. Concatenation and addition are simple-fusion controls.
+        4. **Ground on unseen scenes.** A text-conditioned scorer chooses among real object boxes in four held-out scenes. Acc@0.25 and Acc@0.50 test 3D box overlap.
 
-    The public split contains six train scenes, four held-out scenes, 328 post-validation training expressions, and 233 held-out expressions. Primary explicit evidence comes from RGB-reconstructed VGGT points; a sensor-mesh branch checks the privileged-depth confound.
+        The public split contains six train scenes, four held-out scenes, 328 post-validation training expressions, and 233 held-out expressions. Primary explicit evidence comes from RGB-reconstructed VGGT points; a sensor-mesh branch checks the privileged-depth confound.
 
-    ## Compute and provenance
+        ## Compute and provenance
 
-    Formal runs used **Kubernetes**, **NVIDIA RTX PRO 6000 Blackwell** GPUs, and a peak of **16 concurrent GPUs**. The fresh valid campaign occupied **1.6434 wall hours** from first valid run start to final run finish; each job used four GPUs and four seeds. The exact shared command was:
+    The queue runner verified **18 successful Kubernetes runs** on **NVIDIA RTX PRO 6000 Blackwell** GPUs, with a peak of **16 concurrent GPUs** and **1.955439 observed campaign wall hours**. Each formal job used four GPUs and four seeds. The exact shared command was:
 
-    ```bash
-    bash scripts/run_reproduction.sh
-    ```
+        ```bash
+        bash scripts/run_reproduction.sh
+        ```
 
-    Explore the [detailed report](https://github.com/alphaXiv/3d-aware-vlms-with-implicit-and-explicit-geometr/blob/main/reports/geometry-reproduction/report.md), [raw embedded-result source](https://github.com/alphaXiv/3d-aware-vlms-with-implicit-and-explicit-geometr/blob/main/reports/geometry-reproduction/results.json), or the [matched adapter implementation](https://github.com/alphaXiv/3d-aware-vlms-with-implicit-and-explicit-geometr/blob/main/src/reproduce.py).
+        Explore the [detailed report](https://github.com/alphaXiv/3d-aware-vlms-with-implicit-and-explicit-geometr/blob/main/reports/geometry-reproduction/report.md), [raw embedded-result source](https://github.com/alphaXiv/3d-aware-vlms-with-implicit-and-explicit-geometr/blob/main/reports/geometry-reproduction/results.json), or the [matched adapter implementation](https://github.com/alphaXiv/3d-aware-vlms-with-implicit-and-explicit-geometr/blob/main/src/reproduce.py).
 
-    ## What this does—and does not—establish
+        ## What this does—and does not—establish
 
-    This is real held-out public-scene evidence, not a synthetic proxy. But it is a small proposal-refined grounding task with frozen CLIP/VGGT, a local split of public validation scenes, and no 3B language model. It does **not** test the paper’s full multi-task training recipe or directly compare metric magnitudes with its 3D-video F1 table. A faithful full-scale reproduction still needs the authors’ AnySplat checkpoints and data preparation, official ScanRefer assets, and joint 3B VLM training.
+        This is real held-out public-scene evidence, not a synthetic proxy. But it is a small proposal-refined grounding task with frozen CLIP/VGGT, a local split of public validation scenes, and no 3B language model. It does **not** test the paper’s full multi-task training recipe or directly compare metric magnitudes with its 3D-video F1 table. A faithful full-scale reproduction still needs the authors’ AnySplat checkpoints and data preparation, official ScanRefer assets, and joint 3B VLM training.
     """)
     return
 
