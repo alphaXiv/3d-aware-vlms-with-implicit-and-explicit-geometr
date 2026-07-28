@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: vlmie3d-{{ORX_RUN}}
+spec:
+  activeDeadlineSeconds: 36000
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: run
+          image: pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime
+          command: ["bash", "-c", "$ORX_SCRIPT"]
+          resources:
+            requests:
+              nvidia.com/gpu: "4"
+              cpu: "24"
+              memory: "96Gi"
+            limits:
+              nvidia.com/gpu: "4"
+              cpu: "32"
+              memory: "128Gi"

@@ -1,0 +1,13 @@
+{
+  "variant": "rgb",
+  "label": "RGB-only",
+  "seeds": [0, 1, 2, 3],
+  "frames_per_scene": 8,
+  "tokens_per_stream": 32,
+  "hidden_dim": 128,
+  "epochs": 60,
+  "batch_size": 32,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.01,
+  "max_examples_per_scene": 160
+}
